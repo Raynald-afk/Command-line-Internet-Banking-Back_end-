@@ -1,5 +1,6 @@
 import random
-from collections import deque
+from collections import namedtuple
+
 
 def Account_pin_gen():
     """
@@ -11,20 +12,22 @@ def Account_pin_gen():
     pin  = "".join(random.sample(pin_num,4))
     
     #generating account number
-    part_1 = random.sample(random.randint(1,5),4)
-    print(part_1)
-    
-    
-def Account_info(first_name,second_name,Dob,addrees):
-    info = deque()
-    # storing the information into a deque
-    full_name = first_name+" "+ second_name
-    info.append(first_name)
-    info.append(full_name)
-    info.append(Dob)
-    info.append(addrees)
+    acc_num = ""
+    for _ in range (3):
+        sample = ""
+        for _ in range (1):
+            x_1 = random.randint(1,9)
+            y_1 = "00"
+            x_2  = random.randint(5,9)
+        sample = str(x_1) +str(y_1)+str(x_2)
+        acc_num += sample
+    return acc_num , pin
+
 
     
+    
+def Account_info(first_name,second_name,Dob,address,contact_number):
+        details = namedtuple("info","first_name second_name Dob address contact")
+        info = details(first_name,second_name,Dob,address,contact_number)
+        return info
 
-# Account_info("Raynald","Osei","22/22/22","Patasi")
-Account_pin_gen()
